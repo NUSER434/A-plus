@@ -18,7 +18,13 @@ if ! composer update && composer install; then
 fi
 
 bash ./scripts/init_env.sh
+# Права на папки
+mkdir -p storage/logs
 chmod -R 777 storage bootstrap/cache database
+
+# Создаем файл БД, если его нет
+touch database/database.sqlite
+chmod 777 database/database.sqlite
 
 npm install
 npm run build || echo "Ошибка сборки фронтенда"
