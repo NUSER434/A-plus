@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Авторизация</title>
     @vite('resources/css/app.css')
-    <link rel="stylesheet" href="/build/assets/app-CImqi6kF.css">
 </head>
 <body class="bg-white flex items-center justify-center min-h-screen">
     <div class="w-[450px] h-[400px] border border-black rounded-[10px] flex flex-col items-center justify-center">
