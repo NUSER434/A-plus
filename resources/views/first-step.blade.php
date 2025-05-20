@@ -7,6 +7,8 @@
     <link rel="icon" type="" href="images/logo.png">
     <link rel="shortcut icon" type="" href="images/logo.png">
     @vite('resources/css/app.css')
+    <link rel="stylesheet" href="/build/assets/app-CImqi6kF.css">
+    <script src="/build/assets/app-CiU_oirN" defer></script>
     <script src="{{ asset('js/app.js') }}"></script>
 </head>
 <body class="bg-white flex items-center justify-center min-h-screen">
