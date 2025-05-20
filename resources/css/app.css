@@ -514,3 +514,366 @@
 .animate-letter-fadein {
     animation: letterFadeIn 0.6s ease forwards;
 }
+
+
+
+
+
+
+.clip-trapezoid {
+    clip-path: polygon(0 0, 828px 0, 1128px 500px, 0 500px);
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 1024px) {
+    .slider-image-wrapper {
+        clip-path: none !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
+    .slider-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+    .slider-info{
+        width:300px;
+    }
+}
+
+/* ============ Анимация для изображения ============ */
+
+@keyframes zoomIn {
+    from {
+        transform: scale(1.1);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.slider-image {
+    transform: scale(1.1);
+    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.slider-image.active {
+    animation: zoomIn 0.8s ease forwards;
+}
+
+/* ============ Анимация для текста ============ */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slider-title,
+.slider-subtitle,
+.slider-button {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.slider-title.animate,
+.slider-subtitle.animate,
+.slider-button.animate {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.slider-title.animate {
+    animation-delay: 0.3s;
+}
+
+.slider-subtitle.animate {
+    animation-delay: 0.5s;
+}
+
+.slider-button.animate {
+    animation-delay: 0.7s;
+}
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 960px) {
+    .filter-button {
+        width: calc(50% - 10px); /* По две кнопки в ряд */
+        box-sizing: border-box;
+        font-size: 0.875rem; /* чуть мельче текст */
+    }
+}
+
+
+
+
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-up {
+    animation: fadeUp 0.6s ease forwards;
+}
+
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-up {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-card {
+    flex: 0 0 calc(25% - 1rem);
+    @media (min-width: 1024px) {
+        width: calc(25% - 1rem);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Анимация появления текста по буквам */
+.animate-text-reveal {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.animate-text-reveal span {
+    display: inline-block;
+    animation: revealText 2s ease-in-out forwards;
+}
+
+@keyframes revealText {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+
+/* Начальное состояние карточек */
+.card-container a {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* Анимация появления */
+.card-container a.animate-fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Контейнер для карточек */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 20px;
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+
+
+
+
+/* Начальное состояние карточек */
+.card-container a {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* Анимация появления */
+.card-container a.animate-fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Контейнер для карточек */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 20px;
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+
+
+
+
+/* Начальное состояние модального окна */
+#modal {
+    opacity: 0;
+    background: rgba(0, 0, 0, 0); /* Фон полностью прозрачен */
+    transition: opacity 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+
+/* Активное состояние модального окна */
+#modal.active {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.5); /* Фон затемняется */
+}
+
+/* Начальное состояние контента модального окна */
+.modal-content {
+    transform: scale(0.9); /* Немного уменьшено */
+    opacity: 0; /* Прозрачно */
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* Активное состояние контента модального окна */
+#modal.active .modal-content {
+    transform: scale(1); /* Возвращается к нормальному размеру */
+    opacity: 1; /* Становится видимым */
+}
+
+/* Начальное состояние элементов внутри модального окна */
+.modal-element {
+    opacity: 0;
+    transform: translateY(20px); /* Элементы смещены вниз */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* Активное состояние элементов внутри модального окна */
+#modal.active .modal-element {
+    opacity: 1;
+    transform: translateY(0); /* Элементы возвращаются в исходное положение */
+}
+
+
+
+
+
+
+
+/* Начальное состояние карточек */
+.card-container .animate-fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* Активное состояние карточек */
+.card-container .animate-fade-in.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Контейнер для карточек */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 20px;
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (min-width: 1024px) {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+.card-container .animate-fade-in:nth-child(odd) {
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.card-container .animate-fade-in:nth-child(even) {
+    animation: slideInFromLeft 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
