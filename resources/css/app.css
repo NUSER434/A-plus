@@ -148,3 +148,369 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
+
+
+
+
+
+
+/* Анимация для логотипа */
+@keyframes logoAnimation {
+    0% { opacity: 0; transform: scale(0.5) rotate(-15deg); }
+    70% { opacity: 1; transform: scale(1.1) rotate(5deg); }
+    100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+.animate-logo {
+    animation: logoAnimation 1.5s ease forwards;
+}
+
+/* Анимация появления букв */
+@keyframes letterFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.logo-container .letter {
+    display: inline-block;
+    animation: letterFadeIn 0.6s ease-in-out forwards;
+}
+
+/* Задержки для "Типография" */
+.typo-text .letter:nth-child(1) { animation-delay: 0ms; }
+.typo-text .letter:nth-child(2) { animation-delay: 100ms; }
+.typo-text .letter:nth-child(3) { animation-delay: 200ms; }
+.typo-text .letter:nth-child(4) { animation-delay: 300ms; }
+.typo-text .letter:nth-child(5) { animation-delay: 400ms; }
+.typo-text .letter:nth-child(6) { animation-delay: 500ms; }
+.typo-text .letter:nth-child(7) { animation-delay: 600ms; }
+.typo-text .letter:nth-child(8) { animation-delay: 700ms; }
+.typo-text .letter:nth-child(9) { animation-delay: 800ms; }
+.typo-text .letter:nth-child(10) { animation-delay: 900ms; }
+
+/* Задержки для "А ПЛЮС" */
+.brand-text .letter:nth-child(1) { animation-delay: 400ms; }
+.brand-text .letter:nth-child(2) { animation-delay: 500ms; }
+.brand-text .letter:nth-child(3) { animation-delay: 600ms; }
+.brand-text .letter:nth-child(4) { animation-delay: 700ms; }
+.brand-text .letter:nth-child(5) { animation-delay: 800ms; }
+.brand-text .letter:nth-child(6) { animation-delay: 900ms; }
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ============ Адаптивность: средние экраны (до lg) ============ */
+@media (max-width: 1024px) {
+    .logo-image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .typo-text .letter {
+        font-size: 14px;
+    }
+
+    .brand-text .letter {
+        font-size: 22px;
+    }
+}
+
+/* ============ Маленькие экраны (до md) ============ */
+@media (max-width: 768px) {
+    .logo-text {
+        display: none;
+    }
+
+    .logo-image {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+
+@keyframes counterScale {
+    0% { opacity: 0; transform: scale(0.5); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes logoAnimation {
+    0% { opacity: 0; transform: scale(0.5) rotate(-15deg); }
+    70% { opacity: 1; transform: scale(1.1) rotate(5deg); }
+    100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+.text-container .letter {
+    display: inline-block;
+    opacity: 0;
+    animation: letterFadeIn 0.6s ease-in-out forwards;
+}
+.typo-text .letter,
+.brand-text .letter {
+    animation-delay: calc(var(--index) * 200ms);
+}
+.phone-animation .letter,
+.email-animation .letter {
+    opacity: 0;
+    animation: letterFadeIn 0.6s ease-in-out forwards;
+}
+.phone-animation:hover .letter,
+.email-animation:hover .letter {
+    color: red;
+}
+
+.animate-counter-scale {
+    animation: counterScale 0.6s ease-in-out 0.4s forwards;
+}
+
+
+
+
+
+
+@keyframes socialFadeIn {
+    0% { opacity: 0; transform: scale(0.5) rotate(-15deg); }
+    70% { opacity: 1; transform: scale(1.1) rotate(5deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+
+.phone-animation .letter:nth-child(1) { animation-delay: 0ms; }
+.phone-animation .letter:nth-child(2) { animation-delay: 100ms; }
+.phone-animation .letter:nth-child(3) { animation-delay: 200ms; }
+.phone-animation .letter:nth-child(4) { animation-delay: 300ms; }
+.phone-animation .letter:nth-child(5) { animation-delay: 400ms; }
+.phone-animation .letter:nth-child(6) { animation-delay: 500ms; }
+.phone-animation .letter:nth-child(7) { animation-delay: 600ms; }
+.phone-animation .letter:nth-child(8) { animation-delay: 700ms; }
+.phone-animation .letter:nth-child(9) { animation-delay: 800ms; }
+.phone-animation .letter:nth-child(10) { animation-delay: 900ms; }
+.phone-animation .letter:nth-child(11) { animation-delay: 1000ms; }
+.phone-animation .letter:nth-child(12) { animation-delay: 1100ms; }
+.phone-animation .letter:nth-child(13) { animation-delay: 1200ms; }
+.phone-animation .letter:nth-child(14) { animation-delay: 1300ms; }
+.phone-animation .letter:nth-child(15) { animation-delay: 1400ms; }
+.phone-animation .letter:nth-child(16) { animation-delay: 1500ms; }
+.phone-animation .letter:nth-child(17) { animation-delay: 1600ms; }
+.phone-animation .letter:nth-child(18) { animation-delay: 1700ms; }
+
+.email-animation .letter:nth-child(1) { animation-delay: 900ms; }
+.email-animation .letter:nth-child(2) { animation-delay: 1000ms; }
+.email-animation .letter:nth-child(3) { animation-delay: 1100ms; }
+.email-animation .letter:nth-child(4) { animation-delay: 1200ms; }
+.email-animation .letter:nth-child(5) { animation-delay: 1300ms; }
+.email-animation .letter:nth-child(6) { animation-delay: 1400ms; }
+.email-animation .letter:nth-child(7) { animation-delay: 1500ms; }
+.email-animation .letter:nth-child(8) { animation-delay: 1600ms; }
+.email-animation .letter:nth-child(9) { animation-delay: 1700ms; }
+.email-animation .letter:nth-child(10) { animation-delay: 1800ms; }
+.email-animation .letter:nth-child(11) { animation-delay: 1900ms; }
+.email-animation .letter:nth-child(12) { animation-delay: 2000ms; }
+.email-animation .letter:nth-child(13) { animation-delay: 2100ms; }
+.email-animation .letter:nth-child(14) { animation-delay: 2200ms; }
+.email-animation .letter:nth-child(15) { animation-delay: 2300ms; }
+.email-animation .letter:nth-child(16) { animation-delay: 2400ms; }
+
+/* === Адаптив: скрываем информационный блок на средних и маленьких экранах === */
+@media (max-width: 1024px) {
+    .info-block {
+        display: none !important;
+    }
+}
+
+
+
+
+
+
+/* === Анимация для соцсетей === */
+@keyframes socialIconFadeIn {
+    from { opacity: 0; transform: scale(0.5) rotate(-15deg); }
+    to { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+.animate-social-icon {
+    animation: socialIconFadeIn 1.5s ease forwards;
+}
+
+/* === Скрыть на маленьких и средних экранах === */
+@media (max-width: 1024px) {
+    .socials {
+        display: none !important;
+    }
+}
+
+
+
+
+
+/* Анимация счетчика корзины */
+@keyframes counterScale {
+    0% { opacity: 0; transform: scale(0.5); }
+    100% { opacity: 1; transform: scale(1); }
+}
+.animate-counter-scale {
+    animation: counterScale 0.6s ease-in-out 0.4s forwards;
+}
+
+/* === Адаптивность === */
+@media (max-width: 992px) {
+    .search-container {
+        width: 200px;
+        height: 35px;
+        margin-top: 10px;
+    }
+    .search-icon {
+        width: 20px;
+        height: 20px;
+    }
+    .search-input-group {
+        width: 200px;
+        height: 35px;
+        max-width: 100%;
+        border-radius: 10px; /* Закругляем углы */
+    }
+    .search-input-field {
+        font-size: 12px; /* Уменьшаем размер шрифта на мобильных */
+    }
+    .search-submit {
+        width: 35px; /* Уменьшаем размер кнопки */
+    }
+}
+
+/* === Дополнительный дизайн === */
+.search-input-group {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень для формы */
+}
+.search-results {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень для результатов */
+}
+
+/* === Стиль для каждого элемента результата поиска === */
+.search-results li {
+    @apply p-2 cursor-pointer relative transition-all duration-300 ease-in-out;
+    cursor: pointer;
+}
+
+/* Тонкая линия между результатами */
+.search-results li:not(:last-child)::after {
+    content: '';
+    @apply block h-px bg-gray-200 mt-2;
+}
+
+/* Анимация при наведении */
+.search-results li:hover {
+    @apply bg-red-50 text-red-700;
+    color: #ef4444; /* красная подсветка */
+}
+
+
+
+
+@media (max-width: 992px) {
+    .nav-left {
+        display: none !important;
+    }
+}
+
+
+
+
+
+
+/* === Анимация всплытия === */
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-pop-in  {
+    animation: popIn 0.6s ease forwards;
+}
+.animate-pop-is {
+    animation: popIn 0.6s ease forwards;
+}
+
+/* === Задержка для плавного появления элементов по порядку === */
+.profile-guest .btn-register {
+    animation-delay: 0.2s;
+}
+.profile-guest .btn-login {
+    animation-delay: 0.3s;
+}
+.profile-authenticated .btn-profile,
+.profile-authenticated .btn-logout {
+    animation-delay: 0.2s;
+}
+@media (m-width: 992px) {
+    .profile {
+        justify-content: flex-end;
+    }
+}
+@media (max-width: 992px) {
+    .profile {
+        display: none !important;
+    }
+}
+
+
+
+@keyframes counterScale {
+    0% { opacity: 0; transform: scale(0.5); }
+    100% { opacity: 1; transform: scale(1); }
+}
+.animate-counter-scale {
+    animation: counterScale 0.6s ease-in-out 0.4s forwards;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* === Анимация появления бургера === */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* === Адаптивность для мобильного меню === */
+.mobile-content {
+    width: 90%;
+    max-width: 400px;
+    padding: 2rem;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-nav ul li a {
+    @apply block py-2 text-lg font-medium;
+}
+
+.mobile-socials .meseg {
+    opacity: 0;
+    animation: letterFadeIn 0.6s ease forwards;
+}
+
+/* === Анимация букв === */
+@keyframes letterFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-letter-fadein {
+    animation: letterFadeIn 0.6s ease forwards;
+}
