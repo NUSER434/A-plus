@@ -25,9 +25,9 @@ npm run build
 if command -v php >/dev/null 2>&1; then
     php artisan migrate
     npm run dev&
-    php artisan serve
+    php artisan serve --host=0.0.0.0 --port=$PORT
 else
     "D:/xampp/php/php" artisan migrate
     npm run dev&
-    "D:/xampp/php/php" artisan serve
+    "D:/xampp/php/php" artisan serve --host=0.0.0.0 --port=$PORT
 fi
