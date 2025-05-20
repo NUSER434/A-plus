@@ -20,17 +20,17 @@ fi
 bash ./scripts/init_env.sh
 
 npm install
-# Сборка фронтенда
-npm run build
+npm run build || echo "Ошибка сборки фронтенда"
+
+# Проверяем, появились ли файлы
+ls -la public/build || echo "Build папка не найдена"
 
 if command -v php >/dev/null 2>&1; then
-    php artisan migrate
-    php artisan db:seed --force
+    php artisan migrate --seed --force || echo "Ошибка миграций или сидов"
     npm run dev&
     php artisan serve --host=0.0.0.0 --port=$PORT
 else
-    "D:/xampp/php/php" artisan migrate
-    "D:/xampp/php/php" php artisan db:seed --force
+    "D:/xampp/php/php" php artisan migrate --seed --force || echo "Ошибка миграций или сидов"
     npm run dev&
     "D:/xampp/php/php" artisan serve --host=0.0.0.0 --port=$PORT
 fi
