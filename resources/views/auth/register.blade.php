@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Регистрация</title>
-    @vite('resources/css/app.css')
     <link rel="stylesheet" href="/build/assets/app-BXS_KchZ.css">
 </head>
 <body class="bg-white flex items-center justify-center min-h-screen">
