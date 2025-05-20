@@ -29,8 +29,9 @@ chmod 777 database/database.sqlite
 npm install
 npm run build || echo "Ошибка сборки фронтенда"
 
-# Проверяем, появились ли файлы
+# Проверяем, что создано
 ls -la public/build || echo "Build папка не найдена"
+ls -la public/build/assets || echo "Assets папка пуста или отсутствует"
 
 if command -v php >/dev/null 2>&1; then
     php artisan migrate --seed --force || echo "Ошибка миграций или сидов"
