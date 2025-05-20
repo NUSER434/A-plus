@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite(['resources/js/app.js'])
-    @vite('resources/css/header1.css')
+    <link rel="stylesheet" href="/build/assets/app-BXS_KchZ.css">
 </head>
 <body>
 <header class="site-header w-full">
