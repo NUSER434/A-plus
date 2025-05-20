@@ -18,6 +18,7 @@ if ! composer update && composer install; then
 fi
 
 bash ./scripts/init_env.sh
+chmod -R 777 storage bootstrap/cache database
 
 npm install
 npm run build || echo "Ошибка сборки фронтенда"
