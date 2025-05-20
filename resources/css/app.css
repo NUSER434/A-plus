@@ -877,3 +877,33 @@
         transform: translateX(0);
     }
 }
+
+
+
+/* Анимация палочек под заголовками */
+.profile-content-section .relative h2 {
+    position: relative;
+}
+
+.profile-content-section .relative h2::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background: linear-gradient(to right, #ef4444, #ec4899);
+    transition: all 0.3s ease;
+}
+
+.profile-content-section .relative:hover h2::after {
+    width: 250px;
+}
+
+
+/* profile.css */
+.progress-bar {
+    transition-property: width, background-color;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+}
