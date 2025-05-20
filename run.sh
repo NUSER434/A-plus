@@ -26,6 +26,8 @@ chmod -R 777 storage bootstrap/cache database
 touch database/database.sqlite
 chmod 777 database/database.sqlite
 
+mkdir -p public/build
+chmod -R 777 public/build
 
 
 npm install
@@ -34,9 +36,6 @@ npm run build || echo "Ошибка сборки фронтенда"
 # Проверяем, что создано
 ls -la public/build || echo "Build папка не найдена"
 ls -la public/build/assets || echo "Assets папка пуста или отсутствует"
-
-mkdir -p public/build
-chmod -R 777 public/build
 
 if command -v php >/dev/null 2>&1; then
     php artisan migrate --seed --force || echo "Ошибка миграций или сидов"
