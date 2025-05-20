@@ -9,6 +9,8 @@
     @vite(['resources/js/app.js'])
     @vite('resources/css/app.css')
     @vite('resources/css/home.css')
+    <link rel="stylesheet" href="/build/assets/app-CImqi6kF.css">
+    <script src="/build/assets/app-CiU_oirN" defer></script>
     <script src="{{ asset('js/app.js') }}"></script>
 </head>
 <body class="">
