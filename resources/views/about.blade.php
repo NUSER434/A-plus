@@ -6,7 +6,7 @@
     <title>Типография А-Плюс - О нас</title>
     <link rel="icon" type="" href="images/logo.png">
     <link rel="shortcut icon" type="" href="images/logo.png">
-   <link rel="stylesheet" href="/build/assets/app-BXS_KchZ.css">
+   <link rel="stylesheet" href="/build/assets/app-DR6pe9HW.css">
     <script src="/build/assets/app-CiU_oirN.js" defer></script>
     
 </head>
