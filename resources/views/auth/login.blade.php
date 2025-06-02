@@ -11,8 +11,8 @@
         <h1 class="text-3xl font-bold mb-6">Авторизация</h1>
         <form method="POST" action="{{ route('login') }}" class="space-y-4 w-[350px]">
             @csrf
-            <input type="email" name="email" placeholder="E-mail" class="w-[350px] h-[40px] bg-transparent border border-black rounded">
-            <input type="password" name="password" placeholder="Пароль" class="w-[350px] h-[40px] bg-transparent border border-black rounded">
+            <input type="email" name="email" value="test@example.com"  placeholder="E-mail" class="w-[350px] h-[40px] bg-transparent border border-black rounded">
+            <input type="password" name="password" value="password" placeholder="Пароль" class="w-[350px] h-[40px] bg-transparent border border-black rounded">
             <div class="flex justify-between w-[350px] mt-4">
                 <a href="{{ route('register') }}" class="text-black hover:text-red-500 transition duration-300">У вас нет аккаунта?</a>
                 <button type="submit" class="w-[150px] h-[40px] bg-transparent border border-black text-black text-center leading-[40px] rounded transition duration-300 hover:bg-black hover:text-white">
