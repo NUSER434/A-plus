@@ -35,7 +35,7 @@
                         <img src="{{ asset('images/messengers/mes-icon/you.png') }}" alt="YouTube" class="w-[35px] h-[35px] transition-transform duration-300 group-hover:scale-110">
                     </a>
                     <a href="#" target="_blank" class="group">
-                        <img src="{{ asset('images/messengers/mes-icon/dzen.png') }}" alt="Dzen" class="w-[35px] h-[35px] transition-transform duration-300 group-hover:scale-110">
+                        <img src="" alt="Dzen" class="w-[35px] h-[35px] transition-transform duration-300 group-hover:scale-110">
                     </a>
                 </div>
             </div>
