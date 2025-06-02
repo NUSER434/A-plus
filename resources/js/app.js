@@ -2,7 +2,7 @@ import './bootstrap';
 import './header.js';
 import './about.js';
 import './profile.js';
-import './slider.js';
+import { showContent, openModal, closeModal, setupModalClickOutside } from './slider.js';
 import './carusel.js';
 import { showContent, openModal, closeModal, setupModalClickOutside } from './popular';
 
