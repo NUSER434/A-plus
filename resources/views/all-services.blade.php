@@ -6,8 +6,8 @@
     <title>Типография А-Плюс - Первый шаг</title>
     <link rel="icon" type="" href="images/logo.png">
     <link rel="shortcut icon" type="" href="images/logo.png">
-    <link rel="stylesheet" href="/build/assets/app-BXS_KchZ.css">
-    <script src="/build/assets/app-CiU_oirN.js" defer></script>
+    <link rel="stylesheet" href="/build/assets/app-DR6pe9HW.css">
+    <script src="/build/assets/app-DO02RcWZ" defer></script>
 </head>
 <body>
 @include('partials.basic.header')
