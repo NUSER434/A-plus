@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Регистрация</title>
-    <link rel="stylesheet" href="/build/assets/app-BXS_KchZ.css">
+    <link rel="stylesheet" href="/build/assets/app-DR6pe9HW.css">
 </head>
 <body class="bg-white flex items-center justify-center min-h-screen">
     <div class="w-[450px] h-[650px] border border-black rounded-[10px] flex flex-col items-center justify-center">
