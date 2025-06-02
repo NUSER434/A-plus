@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/build/assets/app-BXS_KchZ.css">
+    <style>
+        .mobile-menu.active {
+              opacity: 1;
+              visibility: visible;
+            }
+    </style>
 </head>
 <body>
 <header class="site-header w-full">
@@ -258,4 +264,34 @@
     @endauth
 </header>
 </body>
+    <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const burgerBtn = document.getElementById('burger-menu');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const closeBtn = document.querySelector('.close-burger');
+
+    if (!burgerBtn || !mobileMenu || !closeBtn) {
+      console.error("Не найдены элементы для бургер-меню");
+      return;
+    }
+
+    // Открытие меню
+    burgerBtn.addEventListener('click', function (e) {
+      e.stopPropagation(); // предотвращаем закрытие при клике на кнопку
+      mobileMenu.classList.add('active');
+    });
+
+    // Закрытие по крестику
+    closeBtn.addEventListener('click', function () {
+      mobileMenu.classList.remove('active');
+    });
+
+    // Закрытие по клику вне контента
+    mobileMenu.addEventListener('click', function (e) {
+      if (e.target === mobileMenu) {
+        mobileMenu.classList.remove('active');
+      }
+    });
+  });
+</script>
 </html>
