@@ -55,4 +55,42 @@ class CartController extends Controller
 
         return redirect()->back()->with('success', 'Заказ оформлен.');
     }
+     public function confirmOrder(Request $request)
+{
+    $validated = $request->validate([
+        'delivery_type' => 'required|in:pickup,delivery',
+        'delivery_address' => 'required_if:delivery_type,delivery',
+        'delivery_date' => 'required|date',
+        'payment_method' => 'required|in:cash_on_delivery,online_payment',
+    ]);
+
+    $user = auth()->user();
+
+    // Получаем все товары из корзины
+    $cartItems = Order::where('user_id', $user->id)->get();
+
+    if ($cartItems->isEmpty()) {
+        return redirect()->back()->with('error', 'Корзина пуста.');
+    }
+
+    // Создаем запись в order_details
+    $orderDetail = OrderDetail::create([
+        'user_id' => $user->id,
+        'delivery_type' => $request->input('delivery_type'),
+        'delivery_address' => $request->input('delivery_address'),
+        'delivery_date' => $request->input('delivery_date'),
+        'payment_method' => $request->input('payment_method'),
+    ]);
+
+    // Перемещаем товары в completed_orders и привязываем к order_details
+    foreach ($cartItems as $item) {
+        $data = $item->toArray();
+        $data['order_detail_id'] = $orderDetail->id;
+
+        CompletedOrder::create($data);
+        $item->delete();
+    }
+
+    return redirect()->route('success');
+}
 }
