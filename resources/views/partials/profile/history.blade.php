@@ -37,57 +37,81 @@
             @else
                 <div class="space-y-6">
                     @foreach ($orders as $order)
-                        <div class="border border-gray-200 rounded-lg p-4 relative">
-                            <!-- Информация о заказе -->
-                            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4">
-                                <div>
-                                    <p class="font-medium">{{ $order->service_type }}</p>
-                                    <p class="text-sm text-gray-500">
-                                        {{ $order->quantity }} шт • {{ number_format($order->price, 2) }} ₽
-                                    </p>
-                                </div>
-                                <div class="mt-2 sm:mt-0">
-                                    <span class="px-3 py-1 text-xs font-semibold rounded-full 
-                                        {{ $order->status == 'in_progress' ? 'bg-yellow-100 text-yellow-800' : '' }}
-                                        {{ $order->status == 'final_stages' ? 'bg-blue-100 text-blue-800' : '' }}
-                                        {{ $order->status == 'completed' ? 'bg-green-100 text-green-800' : '' }}">
-                                        {{ match($order->status) {
-                                            'in_progress' => 'В разработке',
-                                            'final_stages' => 'На финальных этапах',
-                                            'completed' => 'Выполнен',
-                                            default => 'Неизвестный статус',
-                                        } }}
-                                    </span>
-                                </div>
+                    <div class="border border-gray-200 rounded-lg p-4 relative">
+                        <!-- Информация о заказе -->
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4">
+                            <div>
+                                <p class="font-medium">{{ $order->service_type }}</p>
+                                <p class="text-sm text-gray-500">
+                                    {{ $order->quantity }} шт • {{ number_format($order->price, 2) }} ₽
+                                </p>
                             </div>
-
-                            <!-- Прогресс-бар -->
-                            <div class="w-full bg-gray-200 rounded-full h-2.5 mb-4">
-                                <div class="progress-bar bg-gradient-to-r from-red-500 via-rose-500 to-pink-600 h-2.5 rounded-full transition-all duration-1000 ease-in-out"
-                                    style="width: {{ match($order->status) {
-                                        'in_progress' => '33%',
-                                        'final_stages' => '66%',
-                                        'completed' => '100%',
-                                        default => '0%',
-                                    } }}"
-                                    data-order-id="{{ $order->id }}">
-                                </div>
-                            </div>
-
-                            <!-- Детали заказа -->
-                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs text-gray-600 mt-2">
-                                @if ($order->size)
-                                    <div><span class="font-medium">Размер:</span> {{ $order->size }}</div>
-                                @endif
-                                @if ($order->color)
-                                    <div><span class="font-medium">Цвет:</span> {{ $order->color }}</div>
-                                @endif
-                                @if ($order->paper_type)
-                                    <div><span class="font-medium">Бумага:</span> {{ $order->paper_type }}</div>
-                                @endif
+                            <div class="mt-2 sm:mt-0">
+                                <span class="px-3 py-1 text-xs font-semibold rounded-full 
+                                    {{ $order->status == 'in_progress' ? 'bg-yellow-100 text-yellow-800' : '' }}
+                                    {{ $order->status == 'final_stages' ? 'bg-blue-100 text-blue-800' : '' }}
+                                    {{ $order->status == 'completed' ? 'bg-green-100 text-green-800' : '' }}">
+                                    {{ match($order->status) {
+                                        'in_progress' => 'В разработке',
+                                        'final_stages' => 'На финальных этапах',
+                                        'completed' => 'Выполнен',
+                                        default => 'Неизвестный статус',
+                                    } }}
+                                </span>
                             </div>
                         </div>
-                    @endforeach
+
+                        <!-- Прогресс-бар -->
+                        <div class="w-full bg-gray-200 rounded-full h-2.5 mb-4">
+                            <div class="progress-bar bg-gradient-to-r from-red-500 via-rose-500 to-pink-600 h-2.5 rounded-full transition-all duration-1000 ease-in-out"
+                                style="width: {{ match($order->status) {
+                                    'in_progress' => '33%',
+                                    'final_stages' => '66%',
+                                    'completed' => '100%',
+                                    default => '0%',
+                                } }}"
+                                data-order-id="{{ $order->id }}">
+                            </div>
+                        </div>
+
+                        <!-- Детали заказа -->
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs text-gray-600 mt-2">
+                            @if ($order->size)
+                                <div><span class="font-medium">Размер:</span> {{ $order->size }}</div>
+                            @endif
+                            @if ($order->color)
+                                <div><span class="font-medium">Цвет:</span> {{ $order->color }}</div>
+                            @endif
+                            @if ($order->paper_type)
+                                <div><span class="font-medium">Бумага:</span> {{ $order->paper_type }}</div>
+                            @endif
+                            @if ($order->fabric_type)
+                                <div><span class="font-medium">Ткань:</span> {{ $order->fabric_type }}</div>
+                            @endif
+                            @if ($order->print_type)
+                                <div><span class="font-medium">Печать:</span> {{ $order->print_type }}</div>
+                            @endif
+                        </div>
+
+                        <!-- Данные оформления (доставка, оплата) -->
+                        @if ($order->orderDetail)
+                            <div class="mt-4 pt-4 border-t border-gray-100 text-sm text-gray-700 space-y-2">
+                                <p><span class="font-medium">Способ доставки:</span>
+                                    {{ $order->orderDetail->delivery_type == 'pickup' ? 'Самовывоз' : 'Доставка' }}
+                                </p>
+                                @if ($order->orderDetail->delivery_address)
+                                    <p><span class="font-medium">Адрес:</span> {{ $order->orderDetail->delivery_address }}</p>
+                                @endif
+                                @if ($order->orderDetail->delivery_date)
+                                    <p><span class="font-medium">Дата доставки:</span> {{ \Carbon\Carbon::parse($order->orderDetail->delivery_date)->format('d.m.Y') }}</p>
+                                @endif
+                                <p><span class="font-medium">Оплата:</span>
+                                    {{ $order->orderDetail->payment_method == 'cash_on_delivery' ? 'При получении' : ($order->orderDetail->payment_method == 'online_payment' ? 'Онлайн картой' : $order->orderDetail->payment_method) }}
+                                </p>
+                            </div>
+                        @endif
+                    </div>
+                @endforeach
                 </div>
             @endif
         </div>
