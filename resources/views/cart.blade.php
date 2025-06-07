@@ -167,6 +167,41 @@
 </body>
 </html>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const deliveryTypeRadios = document.querySelectorAll('input[name="delivery_type"]');
+        const pickupInfo = document.getElementById('pickup-info');
+        const deliveryAddress = document.getElementById('delivery-address');
+
+        deliveryTypeRadios.forEach(radio => {
+            radio.addEventListener('change', () => {
+                if (radio.value === 'pickup') {
+                    pickupInfo.classList.remove('hidden');
+                    deliveryAddress.classList.add('hidden');
+                } else {
+                    pickupInfo.classList.add('hidden');
+                    deliveryAddress.classList.remove('hidden');
+                }
+            });
+        });
+
+        const paymentMethodRadios = document.querySelectorAll('.payment-method');
+        const cashOptions = document.getElementById('payment-cash-options');
+        const onlineOption = document.getElementById('payment-online-option');
+
+        paymentMethodRadios.forEach(radio => {
+            radio.addEventListener('change', () => {
+                if (radio.value === 'cash_on_delivery') {
+                    cashOptions.classList.remove('hidden');
+                    onlineOption.classList.add('hidden');
+                } else {
+                    cashOptions.classList.add('hidden');
+                    onlineOption.classList.remove('hidden');
+                }
+            });
+        });
+    });
+</script>
 
 <script>
     // Функция открытия модального окна
