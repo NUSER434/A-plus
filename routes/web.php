@@ -99,7 +99,11 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
     Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
-    Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+    Route::post('/cart/checkout', [CartController::class, 'showCheckoutForm'])->name('cart.checkout.form');
+    Route::post('/cart/confirm', [CartController::class, 'confirmOrder'])->name('cart.confirm.order');
+    Route::get('/order/success', function () {
+return view('success'); // или любой другой ответ
+})->name('success');
 });
 
 require __DIR__.'/auth.php';
