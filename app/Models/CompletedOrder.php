@@ -21,11 +21,17 @@ class CompletedOrder extends Model
         'quantity',
         'price',
         'status',
+        'order_detail_id', // ← должно быть здесь
     ];
 
     // Связь с пользователем
     public function user()
     {
         return $this->belongsTo(\App\Models\User::class, 'user_id');
+    }
+
+    public function orderDetail()
+    {
+        return $this->belongsTo(OrderDetail::class, 'order_detail_id');
     }
 }
