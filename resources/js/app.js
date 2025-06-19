@@ -12,41 +12,6 @@ window.Alpine = Alpine;
 Alpine.start();
 
 
-// Делаем функции глобальными
-window.showContent = showContent;
-window.openModal = openModal;
-window.closeModal = closeModal;
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Инициализация первого контента
-    showContent('popular');
-
-    // Подключаем закрытие модального окна по клику вне области
-    setupModalClickOutside();
-
-    // Можно также назначить openModal / closeModal на кнопки
-    // Например:
-    const openBtn = document.getElementById('open-modal-btn');
-    if (openBtn) {
-        openBtn.addEventListener('click', openModal);
-    }
-
-    const closeBtn = document.getElementById('close-modal-btn');
-    if (closeBtn) {
-        closeBtn.addEventListener('click', closeModal);
-    }
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-    updateCartCounter();
-});
-
-
-
-
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const images = document.querySelectorAll('.slider-image');
     let currentIndex = 0;
