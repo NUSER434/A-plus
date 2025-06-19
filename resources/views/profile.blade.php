@@ -6,8 +6,8 @@
     <title>Типография А-Плюс - Профиль</title>
     <link rel="icon" type="" href="images/logo.png">
     <link rel="shortcut icon" type="" href="images/logo.png">
-    <link rel="stylesheet" href="/build/assets/app-DhnIsgT-.css">
-    <script src="/build/assets/app-BS16X1jf.js" defer></script>
+    <link rel="stylesheet" href="/build/assets/app-DgkL7R6B.css">
+    <script src="/build/assets/app-tIW8ihUP.js" defer></script>
       
 </head>
 <body>
