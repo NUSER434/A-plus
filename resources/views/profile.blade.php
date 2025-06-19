@@ -31,8 +31,12 @@
             onclick="showProfileContent('history')">История</button>
     </div>
 
-    @include('partials.profile.personal')
+    <div id="personal" class="profile-content-section hidden">
+        @include('partials.profile.personal')
+    </div>
+    <div id="history" class="profile-content-section hidden">
     @include('partials.profile.history', ['requests' => $requests])
+    </div>
 
 </section>
 
@@ -42,7 +46,7 @@
 @include('partials.buttons')
 
 <script>
-     // Логика для модального окна
+// Логика для модального окна
 const deleteModal = document.getElementById('delete-modal');
 const deleteBtn = document.getElementById('delete-account-btn');
 const closeModalBtn = document.getElementById('close-modal-btn');
@@ -54,7 +58,6 @@ deleteBtn.addEventListener('click', () => {
 closeModalBtn.addEventListener('click', () => {
     deleteModal.classList.add('hidden');
 });
-
 
 // Функция переключения разделов профиля
 window.showProfileContent = function (contentId) {
@@ -68,31 +71,31 @@ window.showProfileContent = function (contentId) {
         btn.classList.remove("active");
     });
 
-    // Показать нужную секцию и добавить класс active к кнопке
+    // Показать нужную секцию
     const targetSection = document.getElementById(contentId);
     if (targetSection) {
         targetSection.classList.remove("hidden");
-        const activeButton = [...document.querySelectorAll(".profile-filter-btn")].find(
-            (btn) => btn.onclick?.toString().includes(`'${contentId}'`)
-        );
+
+        // Найти соответствующую кнопку и сделать её активной
+        const activeButton = document.querySelector(`.profile-filter-btn[data-target="${contentId}"]`);
         if (activeButton) activeButton.classList.add("active");
     }
 };
 
 // Инициализация: показываем "Личная информация" по умолчанию
 document.addEventListener("DOMContentLoaded", () => {
-    const defaultButton = document.querySelector("[onclick=\"showProfileContent('personal')\"]");
+    const defaultButton = document.querySelector('.profile-filter-btn[data-target="personal"]');
     if (defaultButton) {
         defaultButton.click();
     }
 });
 
+// Прогресс бары (оставляем как есть)
 function updateOrderStatus() {
     document.querySelectorAll('.progress-bar').forEach(bar => {
         const currentWidth = parseFloat(bar.style.width);
         const orderId = bar.dataset.orderId;
-        
-        // Логика смены статуса (пример)
+
         if (currentWidth < 33) {
             bar.style.width = '33%';
         } else if (currentWidth < 66) {
@@ -100,16 +103,14 @@ function updateOrderStatus() {
         } else if (currentWidth < 100) {
             bar.style.width = '100%';
         } else {
-            // Завершаем цикл
             clearInterval(window[`interval_${orderId}`]);
         }
     });
 }
 
-// Запускаем анимацию для каждого заказа
 document.querySelectorAll('.progress-bar').forEach(bar => {
     const orderId = bar.dataset.orderId;
-    window[`interval_${orderId}`] = setInterval(updateOrderStatus, 3000); // Обновление каждые 3 секунды
+    window[`interval_${orderId}`] = setInterval(updateOrderStatus, 3000);
 });
 </script>
 </body>
