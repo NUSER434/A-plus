@@ -169,28 +169,71 @@
     </section>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-    // Инициализация первого контента
-    showContent('popular');
+        // Инициализация первого контента
+        showContent('popular');
 
-    // Подключаем закрытие модального окна по клику вне области
-    setupModalClickOutside();
+        // Подключаем закрытие модального окна по клику вне области
+        setupModalClickOutside();
 
-    // Можно также назначить openModal / closeModal на кнопки
-    // Например:
-    const openBtn = document.getElementById('open-modal-btn');
-    if (openBtn) {
-        openBtn.addEventListener('click', openModal);
+        // Обработчики для модального окна
+        const openBtn = document.getElementById('open-modal-btn');
+        if (openBtn) {
+            openBtn.addEventListener('click', openModal);
+        }
+
+        const closeBtn = document.getElementById('close-modal-btn');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeModal);
+        }
+    });
+
+    // Функция отображения контента
+    function showContent(id) {
+        const contents = document.querySelectorAll('.content1');
+        contents.forEach(content => {
+            content.classList.add('hidden');
+        });
+
+        const activeContent = document.getElementById(id);
+        if (activeContent) {
+            activeContent.classList.remove('hidden');
+        }
+
+        // Можно также обновлять активный стиль кнопок:
+        const buttons = document.querySelectorAll('.filter-button');
+        buttons.forEach(button => {
+            button.classList.remove('active-button');
+            if (button.getAttribute('onclick') === `showContent('${id}')`) {
+                button.classList.add('active-button');
+            }
+        });
     }
 
-    const closeBtn = document.getElementById('close-modal-btn');
-    if (closeBtn) {
-        closeBtn.addEventListener('click', closeModal);
+    // Заглушка для openModal и closeModal, если они ещё не определены
+    function openModal() {
+        const modal = document.getElementById('modal');
+        if (modal) modal.classList.remove('hidden');
     }
-});
 
-document.addEventListener('DOMContentLoaded', function () {
-    updateCartCounter();
-});
+    function closeModal() {
+        const modal = document.getElementById('modal');
+        if (modal) modal.classList.add('hidden');
+    }
+
+    function setupModalClickOutside() {
+        const modal = document.getElementById('modal');
+        if (!modal) return;
+
+        modal.addEventListener('click', function (e) {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        updateCartCounter();
+    });
 </script>
 </body>
 </html>
