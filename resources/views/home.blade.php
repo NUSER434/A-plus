@@ -45,31 +45,5 @@
 
 
 @include('partials.buttons')
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    // Инициализация первого контента
-    showContent('popular');
-
-    // Подключаем закрытие модального окна по клику вне области
-    setupModalClickOutside();
-
-    // Можно также назначить openModal / closeModal на кнопки
-    // Например:
-    const openBtn = document.getElementById('open-modal-btn');
-    if (openBtn) {
-        openBtn.addEventListener('click', openModal);
-    }
-
-    const closeBtn = document.getElementById('close-modal-btn');
-    if (closeBtn) {
-        closeBtn.addEventListener('click', closeModal);
-    }
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-    updateCartCounter();
-});
-</script>
 </body>
 </html>
