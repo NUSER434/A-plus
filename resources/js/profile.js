@@ -19,7 +19,36 @@ closeModalBtn.addEventListener('click', () => {
 
 
 
+// Функция переключения разделов профиля
+window.showProfileContent = function (contentId) {
+    // Скрыть все секции
+    document.querySelectorAll(".profile-content-section").forEach((section) => {
+        section.classList.add("hidden");
+    });
 
+    // Убрать активный класс у всех кнопок
+    document.querySelectorAll(".profile-filter-btn").forEach((btn) => {
+        btn.classList.remove("active");
+    });
+
+    // Показать нужную секцию и добавить класс active к кнопке
+    const targetSection = document.getElementById(contentId);
+    if (targetSection) {
+        targetSection.classList.remove("hidden");
+        const activeButton = [...document.querySelectorAll(".profile-filter-btn")].find(
+            (btn) => btn.onclick?.toString().includes(`'${contentId}'`)
+        );
+        if (activeButton) activeButton.classList.add("active");
+    }
+};
+
+// Инициализация: показываем "Личная информация" по умолчанию
+document.addEventListener("DOMContentLoaded", () => {
+    const defaultButton = document.querySelector("[onclick=\"showProfileContent('personal')\"]");
+    if (defaultButton) {
+        defaultButton.click();
+    }
+});
 
 
 
