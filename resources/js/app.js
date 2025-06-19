@@ -1,7 +1,6 @@
 import './bootstrap';
 import './header.js';
 import './about.js';
-import './profile.js';
 import { animateElements, resetAnimation, showSlide, nextSlide } from './slider.js';
 import './carusel.js';
 import { showContent, openModal, closeModal, setupModalClickOutside } from './popular';
