@@ -21,7 +21,7 @@
                     Специальное предложение
                 </button>
                 <button class="filter-button grow-on-hover min-w-[150px] px-4 py-2 border border-black bg-transparent text-black font-medium rounded-md hover:bg-black hover:text-white transition-all"
-                        onclick="openModal()">
+                        onclick="openLeReModal()">
                     Не знаете что выбрать?
                 </button>
                 <button class="filter-button grow-on-hover min-w-[200px] px-4 py-2 border border-black bg-transparent text-black font-medium rounded-md hover:bg-black hover:text-white transition-all"
@@ -40,7 +40,7 @@
             <div id="special" class="content1 hidden">
                 @include('partials.home-sect.popularity.special')
             </div>
-            <div id="choose" class="content1 hidden">
+            <div id="le-re" class="content1 hidden">
             </div>
             <div id="why-us" class="content1 hidden">
                 @include('partials.home-sect.popularity.why-us')
@@ -48,8 +48,8 @@
 
 
             <!-- Модальное окно -->
-            <div id="modal" class="fixed inset-0 bg-gradient-to-br from-gray-900/80 to-gray-900/80 backdrop-blur-sm flex justify-center items-center hidden z-50 p-4 overflow-y-auto max-h-screen">
-                <div class="bg-white rounded-2xl shadow-2xl w-full max-w-[700px] transform scale-95 opacity-0 transition-all duration-500 modal-content relative overflow-hidden mx-auto my-8">
+            <div id="le-re-modal" class="fixed inset-0 bg-gradient-to-br from-gray-900/80 to-gray-900/80 backdrop-blur-sm flex justify-center items-center hidden z-50 p-4 overflow-y-auto max-h-screen">
+                <div class="modal-content bg-white rounded-2xl shadow-2xl w-full max-w-[700px] transform scale-95 opacity-0 transition-all duration-500 modal-content relative overflow-hidden mx-auto my-8">
                     
                     <!-- Красный градиентный бар -->
                     <div class="h-2 bg-gradient-to-r from-red-500 via-rose-500 to-pink-700"></div>
@@ -172,19 +172,32 @@
         // Инициализация первого контента
         showContent('popular');
 
-        // Подключаем закрытие модального окна по клику вне области
-        setupModalClickOutside();
+    function openLeReModal() {
+        const modal = document.getElementById('le-re-modal');
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+            modal.querySelector('.modal-content').style.opacity = '1';
+            modal.querySelector('.modal-content').style.transform = 'scale(1)';
+        }, 50);
+    }
 
-        // Обработчики для модального окна
-        const openBtn = document.getElementById('open-modal-btn');
-        if (openBtn) {
-            openBtn.addEventListener('click', openModal);
-        }
+    function closeLeReModal() {
+        const modal = document.getElementById('le-re-modal');
+        const content = modal.querySelector('.modal-content');
+        content.style.opacity = '0';
+        content.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            modal.classList.add('hidden');
+        }, 300);
+    }
 
-        const closeBtn = document.getElementById('close-modal-btn');
-        if (closeBtn) {
-            closeBtn.addEventListener('click', closeModal);
+    // Закрытие при клике вне окна
+    document.getElementById('leave-review-modal').addEventListener('click', function(e) {
+        // Проверяем, клик был именно по фону, а не по самому окну
+        if (e.target.id === 'leave-review-modal') {
+            closeLeaveReviewModal();
         }
+    });
     });
 
     // Функция отображения контента
