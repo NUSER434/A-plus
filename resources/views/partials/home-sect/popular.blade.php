@@ -221,49 +221,6 @@
             }
         });
     }
-
-    // Убедись, что функции доступны глобально
-    window.openModal = function () {
-        const modal = document.getElementById('modal');
-        if (modal) modal.classList.remove('hidden');
-    };
-
-    window.closeModal = function () {
-        const modal = document.getElementById('modal');
-        if (modal) modal.classList.add('hidden');
-    };
-
-    window.setupModalClickOutside = function () {
-        const modal = document.getElementById('modal');
-        if (modal) {
-            modal.addEventListener('click', function (e) {
-                if (e.target === modal) {
-                    modal.classList.add('hidden');
-                }
-            });
-        }
-    };
-
-    // Инициализация
-    document.addEventListener('DOMContentLoaded', () => {
-        setupModalClickOutside(); // Поддержка клика вне окна
-        showContent('popular');   // или другая твоя функция
-
-        // Если у тебя есть кнопка с id="open-modal-btn"
-        const openBtn = document.getElementById('open-modal-btn');
-        if (openBtn) {
-            openBtn.addEventListener('click', openModal);
-        }
-
-        const closeBtn = document.getElementById('close-modal-btn');
-        if (closeBtn) {
-            closeBtn.addEventListener('click', closeModal);
-        }
-    });
-
-    document.addEventListener('DOMContentLoaded', function () {
-        updateCartCounter();
-    });
 </script>
 </body>
 </html>
