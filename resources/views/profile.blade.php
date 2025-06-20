@@ -22,7 +22,7 @@
     </section>
 
     <section class="container mx-auto max-w-[1200px] mt-8">
-<div id="history" class="profile-content-section hidden">
+<div id="history" class="profile-content-section">
     <div class="space-y-6">
         <!-- История вопросов -->
         <div class="bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl">
