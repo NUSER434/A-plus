@@ -46,108 +46,100 @@
         <div class="md:col-span-2 space-y-6">
             <form id="confirm-order" method="POST" action="{{ route('cart.confirm.order') }}">
                 @csrf
-
-        <!-- Способ доставки -->
-        <div class="space-y-4">
-            <h3 class="text-xl font-semibold text-gray-800">Способ доставки</h3>
-            <div class="flex flex-wrap gap-6">
-                <label class="inline-flex items-center space-x-2 cursor-pointer p-3 rounded-lg border border-gray-300 transition hover:border-black">
-                    <input type="radio" name="delivery_type" value="pickup" checked class="w-5 h-5 text-black focus:ring-black">
-                    <span class="font-medium text-gray-700">Самовывоз</span>
-                </label>
-
-                <label class="inline-flex items-center space-x-2 cursor-pointer p-3 rounded-lg border border-gray-300 transition hover:border-black">
-                    <input type="radio" name="delivery_type" value="delivery" class="w-5 h-5 text-black focus:ring-black">
-                    <span class="font-medium text-gray-700">Доставка</span>
-                </label>
-            </div>
-
-            <!-- Адрес самовывоза -->
-            <div id="pickup-info" class="mt-2 hidden">
-                <p class="text-sm text-gray-600">Адрес пункта выдачи: г. Москва, ул. Ленина, д. 5</p>
-            </div>
-
-            <!-- Поле адреса доставки -->
-            <div id="delivery-address" class="mt-2 hidden">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Адрес доставки</label>
-                <input type="text"
-                       name="delivery_address"
-                       class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition">
-            </div>
-        </div>
-
-        <!-- Дата доставки -->
-        <div class="space-y-4">
-            <h3 class="text-xl font-semibold text-gray-800">Дата доставки</h3>
-            <div class="flex flex-wrap gap-4">
-                @php
-                    $today = now();
-                    $dates = [];
-                    for ($i = 0; $i < 5; $i++) {
-                        $dates[] = $today->copy()->addDays($i);
-                    }
-                @endphp
-                @foreach ($dates as $date)
+                    <!-- Способ доставки -->
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-semibold text-gray-800">Способ доставки</h3>
+                        <div class="flex flex-wrap gap-6">
+                            <label class="inline-flex items-center space-x-2 cursor-pointer p-3 rounded-lg border border-gray-300 transition hover:border-black">
+                                <input type="radio" name="delivery_type" value="pickup" checked class="w-5 h-5 text-black focus:ring-black">
+                                <span class="font-medium text-gray-700">Самовывоз</span>
+                            </label>
+            
+                            <label class="inline-flex items-center space-x-2 cursor-pointer p-3 rounded-lg border border-gray-300 transition hover:border-black">
+                                <input type="radio" name="delivery_type" value="delivery" class="w-5 h-5 text-black focus:ring-black">
+                                <span class="font-medium text-gray-700">Доставка</span>
+                            </label>
+                        </div>
+                        <!-- Адрес самовывоза -->
+                        <div id="pickup-info" class="mt-2 hidden">
+                            <p class="text-sm text-gray-600">Адрес пункта выдачи: г. Москва, ул. Ленина, д. 5</p>
+                        </div>
+                        <!-- Поле адреса доставки -->
+                        <div id="delivery-address" class="mt-2 hidden">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Адрес доставки</label>
+                            <input type="text"
+                                   name="delivery_address"
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition">
+                        </div>
+                    </div>
+                <!-- Дата доставки -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Дата доставки</h3>
+                    <div class="flex flex-wrap gap-4">
+                        @php
+                            $today = now();
+                            $dates = [];
+                            for ($i = 0; $i < 5; $i++) {
+                                $dates[] = $today->copy()->addDays($i);
+                            }
+                        @endphp
+                        @foreach ($dates as $date)
+                            <label class="inline-flex items-center space-x-2 cursor-pointer p-3 rounded-lg border border-gray-300 transition hover:border-black">
+                                <input type="radio" name="delivery_date" value="{{ $date->format('Y-m-d') }}" class="w-5 h-5 text-black focus:ring-black">
+                                <span class="font-medium text-gray-700">{{ $date->format('d M') }}</span>
+                            </label>
+                        @endforeach
+                    </div>
+                </div>
+            <!-- Способ оплаты -->
+            <div class="space-y-4">
+                <h3 class="text-xl font-semibold text-gray-800">Способ оплаты</h3>
+                <div class="flex flex-wrap gap-6">
                     <label class="inline-flex items-center space-x-2 cursor-pointer p-3 rounded-lg border border-gray-300 transition hover:border-black">
-                        <input type="radio" name="delivery_date" value="{{ $date->format('Y-m-d') }}" class="w-5 h-5 text-black focus:ring-black">
-                        <span class="font-medium text-gray-700">{{ $date->format('d M') }}</span>
+                        <input type="radio" name="payment_method" value="cash_on_delivery" checked class="w-5 h-5 text-black focus:ring-black payment-method">
+                        <span class="font-medium text-gray-700">При получении</span>
                     </label>
-                @endforeach
+    
+                    <label class="inline-flex items-center space-x-2 cursor-pointer p-3 rounded-lg border border-gray-300 transition hover:border-black">
+                        <input type="radio" name="payment_method" value="online_payment" class="w-5 h-5 text-black focus:ring-black payment-method">
+                        <span class="font-medium text-gray-700">Сразу</span>
+                    </label>
+                </div>
+                <!-- При получении -->
+                <div id="payment-cash-options" class="mt-4 space-y-3">
+                    <label class="inline-flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-gray-50">
+                        <input type="radio" name="payment_type" value="card" class="w-4 h-4 text-black focus:ring-black">
+                        <span class="text-gray-700">Банковской картой</span>
+                    </label>
+                    <label class="inline-flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-gray-50">
+                        <input type="radio" name="payment_type" value="cash" class="w-4 h-4 text-black focus:ring-black">
+                        <span class="text-gray-700">Наличными</span>
+                    </label>
+                </div>
+                <!-- Онлайн оплата -->
+                <div id="payment-online-option" class="mt-4 hidden">
+                    <p class="text-sm text-gray-600">Вы будете перенаправлены на платёжный шлюз после подтверждения заказа.</p>
+                </div>
             </div>
-        </div>
-
-        <!-- Способ оплаты -->
-        <div class="space-y-4">
-            <h3 class="text-xl font-semibold text-gray-800">Способ оплаты</h3>
-            <div class="flex flex-wrap gap-6">
-                <label class="inline-flex items-center space-x-2 cursor-pointer p-3 rounded-lg border border-gray-300 transition hover:border-black">
-                    <input type="radio" name="payment_method" value="cash_on_delivery" checked class="w-5 h-5 text-black focus:ring-black payment-method">
-                    <span class="font-medium text-gray-700">При получении</span>
-                </label>
-
-                <label class="inline-flex items-center space-x-2 cursor-pointer p-3 rounded-lg border border-gray-300 transition hover:border-black">
-                    <input type="radio" name="payment_method" value="online_payment" class="w-5 h-5 text-black focus:ring-black payment-method">
-                    <span class="font-medium text-gray-700">Сразу</span>
-                </label>
+            <!-- Кнопка оформления -->
+            <div class="mt-8">
+                <button type="submit"
+                        class="w-full bg-black text-white py-3 px-6 rounded-md hover:bg-gray-800 transition-colors duration-300 font-medium">
+                    Оформить заказ
+                </button>
             </div>
+        </form>
+    </div>
 
-            <!-- При получении -->
-            <div id="payment-cash-options" class="mt-4 space-y-3">
-                <label class="inline-flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-gray-50">
-                    <input type="radio" name="payment_type" value="card" class="w-4 h-4 text-black focus:ring-black">
-                    <span class="text-gray-700">Банковской картой</span>
-                </label>
-                <label class="inline-flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-gray-50">
-                    <input type="radio" name="payment_type" value="cash" class="w-4 h-4 text-black focus:ring-black">
-                    <span class="text-gray-700">Наличными</span>
-                </label>
-            </div>
-
-            <!-- Онлайн оплата -->
-            <div id="payment-online-option" class="mt-4 hidden">
-                <p class="text-sm text-gray-600">Вы будете перенаправлены на платёжный шлюз после подтверждения заказа.</p>
-            </div>
-        </div>
-
-        <!-- Кнопка оформления -->
-        <div class="mt-8">
-            <button type="submit"
-                    class="w-full bg-black text-white py-3 px-6 rounded-md hover:bg-gray-800 transition-colors duration-300 font-medium">
-                Оформить заказ
-            </button>
-        </div>
-            </form>
-        </div>
-
-        <!-- Итоговая цена -->
-        <div class="bg-white border border-gray-300 rounded-lg p-6 shadow-sm">
-            <h2 class="text-xl font-bold mb-4">Итого</h2>
-            <div class="flex justify-between items-center mb-4">
-                <span>Общая сумма:</span>
-                <span class="font-bold">{{ $totalPrice }} руб.</span>
-            </div>
+    <!-- Итоговая цена -->
+    <div class="bg-white border border-gray-300 rounded-lg p-6 shadow-sm">
+        <h2 class="text-xl font-bold mb-4">Итого</h2>
+        <div class="flex justify-between items-center mb-4">
+            <span>Общая сумма:</span>
+            <span class="font-bold">{{ $totalPrice }} руб.</span>
         </div>
     </div>
+</div>
 </main>
 
 <!-- Модальное окно -->
