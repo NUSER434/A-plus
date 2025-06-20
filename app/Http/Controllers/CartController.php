@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
 use App\Models\CompletedOrder;
+use App\Models\OrderDetail;
 
 class CartController extends Controller
 {
